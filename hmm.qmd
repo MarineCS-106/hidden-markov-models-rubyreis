@@ -1,0 +1,157 @@
+---
+title: "Hidden Markov Models"
+format: html
+editor: visual
+---
+
+## Intro
+
+Today's class is about using hidden Markov models (HMMs) to infer an animal's behavioral state from its movement track. HMMs are *statistical* models with broad applications, well beyond ecology ([@fig-hmm]).
+
+![Hidden Markov models are statistical models that infer hidden states (e.g., behavior) from a sequence of observations (e.g., step lengths and turning angles).](images/hmm.png){#fig-hmm}
+
+We will use HMMs in the context of movement ecology, which is a *scientific* model ([@fig-movement-ecology]).
+
+![The movement ecology framework is a scientific model describing how animals interact with their environments through movement.](images/movementecology.png){#fig-movement-ecology}
+
+Our goals for today are to:
+
+-   *Relate* components of intuitive, scientific, statistical, and computational models.
+
+-   *Implement* a hidden Markov model using quantitative movement metrics.
+
+-   *Interpret* components of the statistical model in the context of the scientific model.
+
+Picture the moment one of our seabirds (Cooper, Ella, or Sydney) slowed down from a sprint to a walk and bent down to look for a fishing lure.
+
+**Q1:** Describe how you think this moment would be described by intuitive, scientific, and statistical models.
+
+## Setup
+
+Run `install.packages("moveHMM")` at the console.
+
+```{r}
+#| label: setup
+
+library(moveHMM)
+library(terra)
+library(tidyverse)
+library(tidyterra)
+theme_set(theme_bw())
+
+```
+
+## Load data
+
+We will use two data sources in today's class: the movement track (data/track.gpx) and an environmental raster describing the frontal features (data/frontal_intensity.tiff).
+
+```{r}
+#| label: load-data
+
+# Load track
+
+# Convert to data frame (necessary for HMM)
+
+# Load environment
+
+```
+
+Visualize the two data sources together.
+
+```{r}
+#| label: viz-data
+
+# Convert track points to lines
+
+# Create map
+
+```
+
+## Fit the statistical model
+
+Now we'll fit a hidden Markov model to our data.
+
+-   Note: Clarify what the #\| means
+
+```{r}
+#| label: prepare-data
+
+# Prepare the data for model fitting
+
+```
+
+**Q2:** What did `prepData()` do? What does this mean in the context of the scientific and statistical models?
+
+```{r}
+#| label: viz-metrics
+
+# Visualize distribution of step lengths
+
+# Visualize distribution of turning angles
+
+```
+
+**Q3:** What are reasonable *starting parameters* for the forage and transit states? Recall the track simulation from week 4.
+
+| Parameter           | Forage           | Transit          |
+|---------------------|------------------|------------------|
+| Step mean           | \[number\]       | \[number\]       |
+| Step s.d.           | \[more or less\] | \[more or less\] |
+| Angle mean          | \[number\]       | \[number\]       |
+| Angle concentration | \[more or less\] | \[more or less\] |
+
+```{r}
+#| label: fit-hmm
+
+# Fit a 2-state HMM to the track
+
+```
+
+```{r}
+#| label: viz-hmm
+
+# Visualize the components of the HMM
+
+```
+
+**Q4:** Match each plot to one of the components of the HMM. Note: one component is represented twice, one plot shows two components, and one component isn't plotted.
+
+-   Data
+
+-   Hidden states
+
+-   Emission distributions
+
+-   Transition matrix
+
+## Refine the statistical model
+
+Our model currently infers behavior in a vacuum. Even though the classification of foraging and transit appears reasonable, we have no other context to interpret the behavior. Though our model may be accurate, it's not adding much to our understanding of the scientific model. Let's incorporate the frontal intensity data into the model to gain a deeper understanding of our seabirds' movement ecology.
+
+**Q6:** Using the *since-if-then* framing, write a hypothesis for the relationship between seabird behavior and frontal intensity.
+
+```{r}
+#| label: refine-model
+
+# First, extract the frontal intensity at the track locations
+
+# Fit model, incorporating the frontal intensity
+
+```
+
+Visualize the refined model.
+
+```{r}
+#| label: viz-hmm2
+
+# Plot refined HMM
+
+```
+
+**Q7:** What new component did we plot?
+
+**Q8:** Interpret the new component in the context of the scientific and statistical models.
+
+## Reflect
+
+**Q9:** *"All models are wrong, but some are useful."* What is one way this statistical model is "wrong" (i.e., omits or simplifies part of the scientific model) and one way that it is useful (i.e., adds to our understanding of the scientific model).

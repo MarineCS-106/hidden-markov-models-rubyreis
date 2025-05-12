@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.topografix.com/GPX/1/1" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd" version="1.1" creator="Open GPX Tracker for iOS">
+	<trk>
+		<trkseg>
+			<trkpt lat="34.418441778916645" lon="-119.85478324564109">
+				<ele>10.529137535952032</ele>
+				<time>2025-05-07T21:13:16Z</time>
+			</trkpt>
+			<trkpt lat="34.41845184663027" lon="-119.85479892703866">
+				<ele>10.47267605829984</ele>
+				<time>2025-05-07T21:13:17Z</time>
+			</trkpt>
+			<trkpt lat="34.41846005861396" lon="-119.85481603539674">
+				<ele>10.552789418958127</ele>
+				<time>2025-05-07T21:13:18Z</time>
+			</trkpt>
+			<trkpt lat="34.41848578378167" lon="-119.85480781529972">
+				<ele>12.00655957031995</ele>
+				<time>2025-05-07T21:13:20Z</time>
+			</trkpt>
+			<trkpt lat="34.41853117085394" lon="-119.85478590110581">
+				<ele>13.047663527540863</ele>
+				<time>2025-05-07T21:13:21Z</time>
+			</trkpt>
+			<trkpt lat="34.41858996343624" lon="-119.85475420217182">
+				<ele>11.956811022944748</ele>
+				<time>2025-05-07T21:13:22Z</time>
+			</trkpt>
+			<trkpt lat="34.41864527163375" lon="-119.85474185881382">
+				<ele>12.447356772609055</ele>
+				<time>2025-05-07T21:13:23Z</time>
+			</trkpt>
+			<trkpt lat="34.41868726369441" lon="-119.85471453355129">
+				<ele>12.111745082773268</ele>
+				<time>2025-05-07T21:13:24Z</time>
+			</trkpt>
+			<trkpt lat="34.41874480881352" lon="-119.85468804956959">
+				<ele>11.033943951129913</ele>
+				<time>2025-05-07T21:13:25Z</time>
+			</trkpt>
+			<trkpt lat="34.418809080011954" lon="-119.85469178562361">
+				<ele>11.567322752438486</ele>
+				<time>2025-05-07T21:13:26Z</time>
+			</trkpt>
+			<trkpt lat="34.418861894818235" lon="-119.85467209540947">
+				<ele>11.466486626304686</ele>
+				<time>2025-05-07T21:13:27Z</time>
+			</trkpt>
+			<trkpt lat="34.418895809595256" lon="-119.85466779300081">
+				<ele>10.102454032748938</ele>
+				<time>2025-05-07T21:13:28Z</time>
+			</trkpt>
+			<trkpt lat="34.41847550661379" lon="-119.85483289205747">
+				<ele>11.830156784504652</ele>
+				<time>2025-05-07T21:18:58Z</time>
+			</trkpt>
+		</trkseg>
+	</trk>
+</gpx>

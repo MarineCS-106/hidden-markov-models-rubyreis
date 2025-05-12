@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.topografix.com/GPX/1/1" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd" version="1.1" creator="Open GPX Tracker for iOS">
+	<trk>
+		<trkseg>
+			<trkpt lat="34.41882760339728" lon="-119.85470314778422">
+				<ele>16.04343375004828</ele>
+				<time>2025-05-07T20:18:48Z</time>
+			</trkpt>
+			<trkpt lat="34.4188576751214" lon="-119.8547133916728">
+				<ele>15.496947389096022</ele>
+				<time>2025-05-07T20:18:51Z</time>
+			</trkpt>
+			<trkpt lat="34.418877016196184" lon="-119.85471956598394">
+				<ele>15.778471070341766</ele>
+				<time>2025-05-07T20:18:53Z</time>
+			</trkpt>
+			<trkpt lat="34.41889543291573" lon="-119.85472514553726">
+				<ele>15.50095616094768</ele>
+				<time>2025-05-07T20:18:55Z</time>
+			</trkpt>
+			<trkpt lat="34.41891478610958" lon="-119.85472862128856">
+				<ele>15.671773820184171</ele>
+				<time>2025-05-07T20:18:57Z</time>
+			</trkpt>
+			<trkpt lat="34.41893923870161" lon="-119.85473174872362">
+				<ele>15.639674812555313</ele>
+				<time>2025-05-07T20:19:00Z</time>
+			</trkpt>
+			<trkpt lat="34.4189604792421" lon="-119.85473543965044">
+				<ele>15.87803795747459</ele>
+				<time>2025-05-07T20:19:02Z</time>
+			</trkpt>
+			<trkpt lat="34.418984245447284" lon="-119.85474210614441">
+				<ele>15.840796303004026</ele>
+				<time>2025-05-07T20:19:04Z</time>
+			</trkpt>
+			<trkpt lat="34.419003282515874" lon="-119.85475357910038">
+				<ele>16.118758271448314</ele>
+				<time>2025-05-07T20:19:06Z</time>
+			</trkpt>
+			<trkpt lat="34.41902261579877" lon="-119.85476480654361">
+				<ele>15.45850552432239</ele>
+				<time>2025-05-07T20:19:08Z</time>
+			</trkpt>
+			<trkpt lat="34.41904150939672" lon="-119.85477746680091">
+				<ele>15.643644222058356</ele>
+				<time>2025-05-07T20:19:10Z</time>
+			</trkpt>
+			<trkpt lat="34.41905916006484" lon="-119.85479383534827">
+				<ele>15.516091903671622</ele>
+				<time>2025-05-07T20:19:12Z</time>
+			</trkpt>
+			<trkpt lat="34.419073908744735" lon="-119.85480882388097">
+				<ele>15.475822372362018</ele>
+				<time>2025-05-07T20:19:14Z</time>
+			</trkpt>
+		</trkseg>
+	</trk>
+</gpx>
