@@ -1,0 +1,136 @@
+---
+title: "Design a Study"
+format: html
+---
+
+
+## Migration Ecology of Emperor Penguins
+
+# Introduction
+In this experiment, we observe the behaviors of Emperor penguins throughout a forage trip. Emperor penguins mainly eat Antarctic silverfish (*Pleuragramma antarctica*), but krill and squid are present in their diets. These creatures all reside around 200-700 meters below the surface of the ocean. Trenches in the Southern Ocean have an average depth of 1,000–4,000 meters. Emperor penguins themselves dive mainly within 100–500 meters, rarely beyond 600 meters.
+
+Movement ecology helps us understand how animals movements based on what’s going on in their environment. Different behaviors like traveling or searching for food can be guessed from tracking data using tools called Hidden Markov Models (HMMs). By combining the penguins’ movement data with information about food abundance around ocean trenches, we want to see if these deep underwater features change how penguins behave and move when they’re foraging.Hidden Markov Models allow us to test our hypothesis that ocean trenches influence Emperor penguin movement patterns.
+
+@fig-track shows when a penguin will visit different trenches during a foraging trip and allows us to ask the question: How do ocean trenches affect the behaviors of Emperor penguins when on foraging trips? 
+
+
+# Methods
+I created a movement data set representing the coordinates of an emperor penguin as it foraged across a study area (@fig-habitat) created in JS Paint. The coordinates were chosen to mirror realistic movement patterns across different depths of the Southern Ocean. In order to analyze the data, I calculated the coordinates into step lengths and turning angles. Using a Hidden Markov Model with two behavioral states, I was able to extract information on when the penguins were foraging versus traveling.
+
+A Hidden Markov Model is the most appropriate model because animal movements are collected overtime and aren't always visible. HMM can tell when an animal switches between different behaviors based on their step lengths and turning angles. 
+
+
+## Load Data
+
+```{r}
+# label: setup
+
+library(moveHMM)
+library(terra)
+library(tidyterra)
+library(tidyverse) 
+
+```
+
+```{r}
+#l label: fig-habitat
+
+trenches <- rast("trenches.tif")
+ext(trenches) <- ext(0, 1, 0, 1)
+crs(trenches) <- "epsg:4326"
+trenches <- trenches [[1]]
+plot(trenches)
+                 
+```
+
+```{r}
+# label: fig-track
+
+track <- read_csv("data.csv")
+track_sp <- vect(track, 
+                 geom = c("X", "Y"),
+                 crs = crs(trenches))
+
+track_lines <- as.lines(track_sp)
+
+ggplot() +
+  geom_spatraster(data = trenches) +
+  geom_spatvector(data = track_lines,
+                  color = "gold") 
+
+```
+
+
+## Prepare the Data
+```{r}
+#l label: prepare-data
+
+# Data 
+track <- data.frame(
+X = c(0.5, 0.56, 0.58, 0.59, 0.58, 0.57, 0.5, 0.45, 0.43, 0.4,
+      0.35, 0.34, 0.29, 0.42, 0.5, 0.7, 0.65, 0.68, 0.7, 0.74,
+      0.75, 0.73, 0.6, 0.5, 0.6, 0.5, 0.65, 0.8, 0.78, 0.79,
+      0.74, 0.65, 0.5, 0.35, 0.38, 0.41, 0.43, 0.45, 0.42, 0.39,
+      0.43, 0.45, 0.5, 0.46, 0.43, 0.36, 0.39, 0.3, 0.29, 0.31,
+      0.5, 0.65, 0.67, 0.64, 0.68, 0.72, 0.71, 0.6, 0.45),
+
+Y = c(0.5, 0.6, 0.75, 0.85, 0.93, 0.91, 0.75, 0.5, 0.43, 0.34,
+      0.5, 0.59, 0.64, 0.58, 0.5, 0.34, 0.2, 0.18, 0.12, 0.05,
+      0.07, 0.18, 0.25, 0.4, 0.5, 0.5, 0.6, 0.75, 0.74, 0.76,
+      0.73, 0.74, 0.5, 0.6, 0.7, 0.73, 0.76, 0.72, 0.74, 0.78,
+      0.8, 0.75, 0.74, 0.76, 0.73, 0.74, 0.76, 0.6, 0.5, 0.5,
+      0.3, 0.25, 0.27, 0.3, 0.32, 0.3, 0.35, 0.5, 0.65)
+)
+
+# Prepare the data 
+
+track$ID <- "penguin"
+
+track_prep <- prepData(track, coordNames = c("X", "Y"))
+
+```
+
+## Visualizing the Step Lengths and Turning Angles in Histograms
+```{r}
+#l label: fig-SL-TA
+
+# Step lengths 
+ggplot(track_prep,aes(step)) +
+  geom_histogram()
+
+# Turning Angles
+ggplot(track_prep, aes(angle)) +
+  geom_histogram()
+```
+
+## Fitting Into 2 State Hidden Markov Model 
+```{r}
+#l label: fitting-hmm
+
+# Fit the HMM
+track_hmm <- fitHMM(track_prep,
+                nbStates = 2,
+                stepPar0 = c(0.01, 0.05, 0.05, 0.015),
+                anglePar0 = c(0, 0, 0.8, 0.2))
+
+
+```
+
+## Hidden Markov Model 
+```{r}
+#l label: fig-hmm
+
+# Visualize the HMM
+
+plot(track_hmm)
+
+
+```
+
+
+
+## Discussion 
+
+My hypothesis was that ocean trenches influence Emperor penguin foraging behavior by affecting their movement patterns. Based on the figure, which shows the track data overlaid on the trench map and the results of the Hidden Markov Model, there is evidence that supports this hypothesis.
+
+I observed that changes in the penguins behavioral states occurred mostly near or along the edges of the trenches. In the Hidden Markov Model, we see that as the density of the trenches increased, the amount of turning angles increases and the step lengths decrease implying a shift from a transit state to a foraging state. These trenches may provide greater access to prey like Antarctic silverfish creating a feeding ground for Emperor penguins. 
